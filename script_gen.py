@@ -136,7 +136,7 @@ for d in dates:
                 towrite = f"# date    ut_beg ut_end  astname   mag  type\n"\
                           f"# {dd['date']} {dd['ut_beg']} {dd['ut_end']} {dd['astname']} {dd['mag']} {dd['type']}\n"\
                           f"rcc autofocus apply\n"\
-                          f"!echo sleep 15\n"\
+                          f"!sleep 15\n"\
                           f"!echo Observing {dd['astname']} until {dd['ut_end']} UT.\n"\
                           f"slew {target}\n"\
                           f"# slew ra={ra} dec={dec}  # in case name resolution doesn't work\n"\
