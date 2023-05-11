@@ -1,0 +1,23 @@
+rcc dome manual
+set dome slit close
+set mount track off
+!sleep 30
+rcc slew 7 -4.5
+set dome azimuth=156.3
+!sleep 60
+rcc tubecover open
+!sleep 10
+rcc mirrorcover open
+!sleep 20
+!energenie-manage --flat-faint on
+sequence -n flat-%N-%F -V -j flat -x 11*([r,20,delay=4])
+!energenie-manage --flat-faint off
+rcc mirrorcover close
+!sleep 15
+rcc tubecover close
+!sleep 15
+rcc slew 0 47.8
+!sleep 30
+sequence -n bias-%N-%F 11*([bias])
+sequence -n dark-180sec-%N-%F 11*([dark,time=180,delay=3])
+sequence -n dark-20sec-%N-%F 11*([dark,time=20,delay=3])
